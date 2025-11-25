@@ -42,6 +42,13 @@ Simulation Tools:
 3. Rasterio - for reading and writing terrain and population data.
 4. SUMO - for traffic simluation and flow analysis.
 
+# System Architecture
+1. Google Maps API: Elevation API for terrain heights, Places API for identifying green areas.
+2. Data preprocessing: Organizes data into DataFrames, cleans noise and incorrect values, builds graph data structures.
+3. GNN prediction: It loads a pre trained GNN model, takes input as nodes+ edges+ features.
+4. Backend: It uses FastAPI server and API endpoints for fetching data, also handles communication between frontend and GNN
+
+
 # Project Risk
 GNN model prediction risk:
 1. Description - The Graph Neural Network (GNN) used in MetroMorph may produce inaccurate or misleading predictions about green zones and terrain lands due to outdated satellite images. If the training data does notshows updated urban changes or the graph structure between land areas is not properly defined, the model may show misleading information.
