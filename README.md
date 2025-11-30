@@ -48,6 +48,10 @@ Simulation Tools:
 3. GNN prediction: It loads a pre trained GNN model, takes input as nodes+ edges+ features.
 4. Backend: It uses FastAPI server and API endpoints for fetching data, also handles communication between frontend and GNN
 
+# How to run project
+## Frontend
+
+## Backend
 
 # Project Risk
 GNN model prediction risk:
@@ -63,4 +67,4 @@ GNN model prediction risk:
 # Phase status
 1. Conception phase - Done
 2. Development phase - Done
-3. Finalisation phase - Under progress 
+3. Finalisation phase - Done
