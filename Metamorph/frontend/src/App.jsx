@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-export default function App() {
+function App() {
   const [message, setMessage] = useState('MetroMorph - Urban City Planner');
 
   return (
@@ -36,3 +36,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;
