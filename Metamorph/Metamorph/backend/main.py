@@ -1,25 +1,54 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from routers import urban_planning, simulation, ml_models
+from fastapi.responses import JSONResponse
+import uvicorn
+from app.routes import projects, analysis, gnn
+from app.config.database import init_db
+import logging
 
-app = FastAPI(title="Metamorph API", version="1.0.0")
+logger = logging.getLogger(__name__)
+import logging
 
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+app = FastAPI(
+    title="Urban Planning GNN API",
+    description="Backend API for Generative Urban City Planner with GNN optimization",
+    version="1.0.0"
+)
+
+# CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:3001"],
+    allow_origins=["http://localhost:5173", "http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.include_router(urban_planning.router, prefix="/api/v1")
-app.include_router(simulation.router, prefix="/api/v1")
-app.include_router(ml_models.router, prefix="/api/v1")
+# Initialize database
+@app.on_event("startup")
+async def startup_event():
+    try:
+        init_db()
+        logger.info("Database initialized")
+    except Exception as e:
+        logger.error(f"Database initialization failed: {e}")
+
+# Include routers
+app.include_router(projects.router, prefix="/api/projects", tags=["projects"])
+app.include_router(analysis.router, prefix="/api/analysis", tags=["analysis"])
+app.include_router(gnn.router, prefix="/api/gnn", tags=["gnn"])
 
 @app.get("/")
-def read_root():
-    return {"message": "Metamorph Urban Planning API"}
+async def root():
+    return {"message": "Urban Planning GNN API", "status": "running"}
 
 @app.get("/health")
-def health_check():
-    return {"status": "healthy"}
+async def health_check():
+    return {"status": "healthy", "service": "urban-planning-api"}
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
