@@ -49,7 +49,7 @@ Simulation Tools:
 4. Backend: It uses FastAPI server and API endpoints for fetching data, also handles communication between frontend and GNN
 
 # Quick Start
-git clone: '''
+git clone: '''https://github.com/Aniket22IU/IU_Project_Aniket-Gaikwad.git'''
 # How to run project
 '''pip install -r requirements'''
 ## Frontend
