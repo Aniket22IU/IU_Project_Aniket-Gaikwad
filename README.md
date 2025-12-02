@@ -53,13 +53,13 @@ git clone: '''https://github.com/Aniket22IU/IU_Project_Aniket-Gaikwad.git'''
 # How to run project
 '''pip install -r requirements'''
 ## Frontend
-'''cd frontend'''
-'''npm install'''
-'''npm run dev'''
+1. '''cd frontend'''
+2. '''npm install'''
+3. '''npm run dev'''
 
 ## Backend
-'''cd backend'''
-'''python3 run.py'''
+1. '''cd backend'''
+2. '''python3 run.py'''
 
 # Project Risk
 GNN model prediction risk:
