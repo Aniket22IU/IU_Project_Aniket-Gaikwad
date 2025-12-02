@@ -48,10 +48,18 @@ Simulation Tools:
 3. GNN prediction: It loads a pre trained GNN model, takes input as nodes+ edges+ features.
 4. Backend: It uses FastAPI server and API endpoints for fetching data, also handles communication between frontend and GNN
 
+# Quick Start
+git clone: '''
 # How to run project
+'''pip install -r requirements'''
 ## Frontend
+'''cd frontend'''
+'''npm install'''
+'''npm run dev'''
 
 ## Backend
+'''cd backend'''
+'''python3 run.py'''
 
 # Project Risk
 GNN model prediction risk:
